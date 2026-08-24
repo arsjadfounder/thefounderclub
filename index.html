@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Founder Club</title>
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>The Founder Club - Contact</title>
     <style>
         * {
             margin: 0;
@@ -31,6 +34,7 @@
             color: #333;
             margin-bottom: 10px;
             text-align: center;
+            font-size: 28px;
         }
         .subtitle {
             color: #666;
@@ -47,6 +51,7 @@
             font-weight: 600;
             margin-bottom: 8px;
             margin-top: 15px;
+            display: block;
         }
         input, textarea {
             padding: 12px;
@@ -55,6 +60,7 @@
             font-size: 14px;
             font-family: inherit;
             transition: border-color 0.3s;
+            width: 100%;
         }
         input:focus, textarea:focus {
             outline: none;
@@ -90,7 +96,7 @@
         <p class="subtitle">Neem contact met ons op!</p>
         
         <form action="https://formspree.io/f/mbgrevak" method="POST">
-            <label for="email">Je email:</label>
+            <label for="email">Je email adres:</label>
             <input type="email" id="email" name="email" required placeholder="jouw@email.com">
             
             <label for="message">Je bericht:</label>
