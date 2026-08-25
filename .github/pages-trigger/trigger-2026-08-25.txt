@@ -1,0 +1,6 @@
+Trigger GitHub Pages rebuild
+
+Bestand aangemaakt door assistant om een push-trigger te forceren voor GitHub Pages.
+Timestamp: 2026-08-25T00:00:00Z
+
+Verwijder gerust dit bestand na succesvolle publicatie.
