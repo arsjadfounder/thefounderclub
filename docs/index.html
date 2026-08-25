@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>The Founder Club VIP - Word Lid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #0A1128; /* Ultra-luxe diep donkerblauw */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: #111A35; /* Iets lichtere luxe blauwe kaart */
+            border: 1px solid #B58928; /* Subtiele gouden rand */
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #D4AF37; /* Koninklijk Goud */
+            margin-bottom: 10px;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            color: #E0E0E0;
+            margin-bottom: 30px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        label {
+            color: #D4AF37; /* Gouden labels */
+            font-weight: 600;
+            margin-bottom: 8px;
+            margin-top: 15px;
+            display: block;
+            font-size: 14px;
+        }
+        input, textarea {
+            padding: 14px;
+            background-color: #0A1128;
+            border: 1px solid #4A5568;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            color: #FFFFFF;
+            transition: border-color 0.3s;
+            width: 100%;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #D4AF37; /* Goud bij selectie */
+        }
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        button {
+            background: linear-gradient(135deg, #B58928 0%, #D4AF37 50%, #F3E5AB 100%); /* Glanzend goud */
+            color: #0A1128; /* Donkerblauwe letters voor contrast */
+            padding: 14px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 25px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Founder Club VIP</h1>
+        <p class="subtitle">Hét exclusieve platform waar high-end ondernemers hun levenspartner én zakelijke co-founder ontmoeten. Meld je aan voor de pre-launch.</p>
+        
+        <form action="https://formspree.io/f/mbgrevak" method="POST">
+            <label for="email">Je zakelijke e-mailadres:</label>
+            <input type="email" id="email" name="email" required placeholder="naam@bedrijf.nl">
+            
+            <label for="message">Waarom wil je lid worden? (Motivatie & Omzet/KvK):</label>
+            <textarea id="message" name="message" required placeholder="Vertel ons kort over jezelf en je onderneming..."></textarea>
+            
+            <button type="submit">Word Lid van de Club</button>
+        </form>
+    </div>
+</body>
+</html>
