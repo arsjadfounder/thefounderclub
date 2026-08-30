@@ -1,0 +1,4 @@
+Rebuild triggered by GitHub Copilot to force Pages redeploy.
+Timestamp: 2026-08-30T00:00:00Z
+Repository: arsjadfounder/thefounderclub
+This is a no-op trigger file — safe to remove.
