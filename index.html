@@ -3,87 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheFounderClubVIP | Exclusive Matchmaking for High-Performing Founders</title>
+    <title>TheFounderClubVIP | Private Equity for Love</title>
     <style>
-        :root { --bg: #0a0a0a; --card: #141414; --gold: #d4af37; --text: #ffffff; --muted: #8e8e93; --border: #222222; }
+        :root {
+            --bg: #0B192C; /* Royal Dark Blue */
+            --card: #1E3047; /* Premium Navy Blue for forms */
+            --gold: #D4AF37; /* High-end Gold for status and action */
+            --text: #FFFFFF;
+            --muted: #8E9AAF;
+            --border: #2A3E59;
+        }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-        body { background-color: var(--bg); color: var(--text); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; overflow-x: hidden; }
-        .hero { max-width: 550px; width: 100%; text-align: center; position: relative; padding: 40px 20px; }
-        .logo-mark { color: var(--gold); font-size: 0.9rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; }
-        h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -1px; line-height: 1.1; margin-bottom: 15px; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.5; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+        .container { max-width: 650px; width: 100%; text-align: center; }
+        h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
         h1 span { color: var(--gold); }
-        .subtitle { color: var(--muted); font-size: 1.05rem; line-height: 1.5; margin-bottom: 40px; }
-        form { background-color: var(--card); border: 1px solid var(--border); padding: 30px; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); text-align: left; }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 8px; }
-        input[type="text"], input[type="email"], select { width: 100%; background-color: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 14px 16px; border-radius: 12px; color: var(--text); font-size: 1rem; outline: none; transition: all 0.2s; }
-        input:focus, select:focus { border-color: var(--gold); background-color: rgba(255,255,255,0.05); }
-        .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .profile-option { position: relative; }
-        .profile-option input { position: absolute; opacity: 0; width: 0; height: 0; }
-        .profile-card { border: 1px solid var(--border); padding: 15px 10px; border-radius: 12px; text-align: center; cursor: pointer; transition: all 0.2s; }
-        .profile-card .title { font-weight: 600; font-size: 0.95rem; color: var(--text); display: block; }
-        .profile-card .desc { font-size: 0.75rem; color: var(--muted); display: block; margin-top: 2px; }
-        .profile-option input:checked + .profile-card { border-color: var(--gold); background-color: rgba(212,175,55,0.08); }
-        .profile-option input:checked + .profile-card .title { color: var(--gold); }
-        button { width: 100%; background-color: var(--gold); color: #000000; border: none; padding: 16px; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 10px; transition: transform 0.2s, opacity 0.2s; }
-        button:hover { opacity: 0.9; transform: translateY(-1px); }
-        footer { margin-top: 30px; font-size: 0.8rem; color: var(--muted); }
-        footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 2px; }
-        footer a:hover { color: var(--gold); border-color: var(--gold); }
+        .tagline { font-size: 1.15rem; color: var(--muted); margin-bottom: 35px; font-weight: 400; }
+        .cta-box { background-color: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 35px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); margin-bottom: 35px; }
+        h2 { font-size: 1.35rem; font-weight: 600; margin-bottom: 20px; letter-spacing: -0.2px; }
+        form { display: flex; flex-direction: column; gap: 12px; }
+        input, select { background-color: #0B192C; border: 1px solid var(--border); padding: 14px; border-radius: 8px; color: #fff; font-size: 0.95rem; width: 100%; outline: none; }
+        input:focus, select:focus { border-color: var(--gold); }
+        button { background-color: var(--gold); color: #000; border: none; padding: 14px; font-size: 0.95rem; font-weight: 700; border-radius: 8px; cursor: pointer; transition: transform 0.1s ease; }
+        button:active { transform: scale(0.98); }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 16px; text-align: left; }
+        .card-item { background-color: var(--card); border: 1px solid var(--border); padding: 20px; border-radius: 12px; }
+        .card-item h3 { color: var(--gold); font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+        .card-item p { font-size: 0.9rem; color: var(--muted); }
+        footer { margin-top: 50px; font-size: 0.75rem; color: var(--muted); }
+        footer a { color: var(--gold); text-decoration: none; }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <div class="logo-mark">TheFounderClubVIP</div>
-        <h1>Loneliness at the top <span>is a choice.</span></h1>
-        <p class="subtitle">The ultra-exclusive, private matchmaking network for high-performing founders, CEOs, and investors looking for romance and business synergy.</p>
-        
-        <form action="https://formspree.io" method="POST">
-            <input type="hidden" name="_next" value="https://thefounderclubvip.com">
-            
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" name="name" placeholder="John Doe" required autocomplete="name">
+    <div class="container">
+        <header>
+            <h1>TheFounderClub<span>VIP</span></h1>
+            <p class="tagline">Private equity for love. The ultra-exclusive matchmaking network for single, high-performing founders, CEOs, and investors building an empire together.</p>
+        </header>
+
+        <div class="cta-box">
+            <h2>Apply for VIP Access</h2>
+            <form action="https://formspree.io/f/xdenqbok" method="POST">
+                <input type="text" name="Name" placeholder="Full name" required autocomplete="name">
+                <input type="email" name="Email" placeholder="Business email address" required autocomplete="email">
+                <select name="Profile" required>
+                    <option value="" disabled selected>Select your founder profile</option>
+                    <option value="Hustler (CEO / Sales / Visionary)">Hustler (CEO / Sales / Visionary)</option>
+                    <option value="Hacker (CTO / Developer / Operations)">Hacker (CTO / Developer / Operations)</option>
+                    <option value="Hipster (Creative / Designer / Marketing)">Hipster (Creative / Designer / Marketing)</option>
+                </select>
+                <button type="submit">Start Manual Pre-Screening</button>
+            </form>
+        </div>
+
+        <div class="grid">
+            <div class="card-item">
+                <h3>Hustle Compatibility</h3>
+                <p>Match with a partner who truly understands your 80-hour work weeks, extreme risks, and executive stress. Equal drive, equal tolerance.</p>
             </div>
-            
-            <div class="form-group">
-                <label>Business Email</label>
-                <input type="email" name="email" placeholder="john@myempire.com" required autocomplete="email">
+            <div class="card-item">
+                <h3>Complementary Skills</h3>
+                <p>Find the perfect romantic connection that instantly solves the missing puzzle piece in your business. Absolute synergy between tech, sales, and creation.</p>
             </div>
-            
-            <div class="form-group">
-                <label>Select Your Profile</label>
-                <div class="profile-grid">
-                    <label class="profile-option">
-                        <input type="radio" name="profile" value="Hustler" checked>
-                        <div class="profile-card">
-                            <span class="title">Hustler</span>
-                            <span class="desc">The Visionary</span>
-                        </div>
-                    </label>
-                    <label class="profile-option">
-                        <input type="radio" name="profile" value="Hacker">
-                        <div class="profile-card">
-                            <span class="title">Hacker</span>
-                            <span class="desc">The Tech Mind</span>
-                        </div>
-                    </label>
-                    <label class="profile-option">
-                        <input type="radio" name="profile" value="Hipster">
-                        <div class="profile-card">
-                            <span class="title">Hipster</span>
-                            <span class="desc">The Creative</span>
-                        </div>
-                    </label>
-                </div>
+            <div class="card-item">
+                <h3>100% Verified Only</h3>
+                <p>Strict manual background and wealth pre-screening. We unconditionally lock out 'golddiggers' and noise to protect your time and capital.</p>
             </div>
-            
-            <button type="submit">Apply for VIP Access</button>
-        </form>
-        
+        </div>
+
         <footer>
-            By applying, you agree to our strict screening terms. <a href="privacy.html">Privacy Policy</a>
+            &copy; 2026 TheFounderClubVIP. Invitation only. Absolute privacy guaranteed. | <a href="privacy.html">Privacy Policy</a>
         </footer>
     </div>
 </body>
