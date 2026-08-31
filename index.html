@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheFounderClubVIP | Private Equity for Love</title>
+    <title>TheFounderClubVIP | VIP Screening Portal</title>
     <style>
         :root {
             --bg: #0a1128; /* Royal Deep Dark Blue */
@@ -15,44 +15,155 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
         body { background-color: var(--bg); color: var(--text); line-height: 1.5; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
-        .container { max-width: 650px; width: 100%; text-align: center; }
+        .container { max-width: 700px; width: 100%; text-align: center; }
         h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
         h1 span { color: var(--gold); }
         .tagline { font-size: 1.15rem; color: var(--muted); margin-bottom: 35px; font-weight: 400; }
         .cta-box { background-color: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 35px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); margin-bottom: 35px; }
         h2 { font-size: 1.35rem; font-weight: 600; margin-bottom: 20px; letter-spacing: -0.2px; }
         form { display: flex; flex-direction: column; gap: 12px; }
-        input, select { background-color: #0a1128; border: 1px solid var(--border); padding: 14px; border-radius: 8px; color: #fff; font-size: 0.95rem; width: 100%; outline: none; -webkit-appearance: none; }
+        input, select { background-color: #0a1128; border: 1px solid var(--border); padding: 14px; border-radius: 8px; color: #fff; font-size: 0.95rem; width: 100%; outline: none; -webkit-appearance: none; appearance: none; }
         input:focus, select:focus { border-color: var(--gold); }
-        button { background-color: var(--gold); color: #0a1128; border: none; padding: 14px; font-size: 0.95rem; font-weight: 700; border-radius: 8px; cursor: pointer; transition: transform 0.1s ease; }
+        
+        /* Checkbox Styling */
+        .checkbox-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding: 16px;
+            background-color: rgba(212, 175, 55, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-align: left;
+        }
+        
+        .checkbox-wrapper input[type="checkbox"] {
+            width: auto;
+            min-width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: var(--gold);
+        }
+        
+        .checkbox-wrapper label {
+            font-size: 0.95rem;
+            color: var(--text);
+            cursor: pointer;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+        
+        .checkbox-wrapper label span {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        button { 
+            background-color: var(--gold); 
+            color: #0a1128; 
+            border: none; 
+            padding: 14px; 
+            font-size: 0.95rem; 
+            font-weight: 700; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            transition: transform 0.1s ease, box-shadow 0.2s ease;
+            margin-top: 10px;
+        }
+        button:hover { box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3); }
         button:active { transform: scale(0.98); }
+        
         .grid { display: grid; grid-template-columns: 1fr; gap: 16px; text-align: left; }
         .card { background-color: var(--card); border: 1px solid var(--border); padding: 20px; border-radius: 12px; }
         .card h3 { color: var(--gold); font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
         .card p { font-size: 0.9rem; color: var(--muted); }
         footer { margin-top: 50px; font-size: 0.8rem; color: var(--muted); }
         footer a { color: var(--gold); text-decoration: none; margin-left: 10px; }
+        
+        .form-section {
+            text-align: left;
+            margin-bottom: 16px;
+        }
+        
+        .form-section label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>TheFounderClub<span>VIP</span></h1>
-            <p class="tagline">Private equity for love. The ultra-exclusive network for single top-entrepreneurs building an empire together.</p>
+            <p class="tagline">Secure VIP Screening Portal | Ultra-Exclusive Network for Elite Entrepreneurs</p>
         </header>
 
         <div class="cta-box">
-            <h2>Apply for Exclusive VIP Access</h2>
-            <form action="https://formspree.io/f/xdenqbok" method="POST">
-                <input type="text" name="Name" placeholder="Full name" required autocomplete="name">
-                <input type="email" name="Email" placeholder="Business email address" required autocomplete="email">
-                <select name="Profile" required>
-                    <option value="" disabled selected>Select your entrepreneurial profile</option>
-                    <option value="Hustler (CEO / Sales / Visionary)">Hustler (CEO / Sales / Visionary)</option>
-                    <option value="Hacker (CTO / Developer / Operations)">Hacker (CTO / Developer / Operations)</option>
-                    <option value="Hipster (Creative / Designer / Marketing)">Hipster (Creative / Designer / Marketing)</option>
-                </select>
-                <button type="submit">Start Manual Pre-Screening</button>
+            <h2>VIP Screening & Evaluation</h2>
+            <form id="vipScreeningForm" action="https://formspree.io/f/xdenqbok" method="POST">
+                
+                <!-- Legal Compliance Checkbox -->
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="legalAgreement" name="legalAgreement" required>
+                    <label for="legalAgreement">
+                        I agree to the <span>€5,000,000.- non-compliance penalty</span> and terms.
+                    </label>
+                </div>
+
+                <!-- Full Legal Name -->
+                <div class="form-section">
+                    <label for="fullName">Full Legal Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full legal name" required autocomplete="name">
+                </div>
+
+                <!-- Corporate/Ultra-HNW Email Address -->
+                <div class="form-section">
+                    <label for="corporateEmail">Corporate/Ultra-HNW Email Address</label>
+                    <input type="email" id="corporateEmail" name="corporateEmail" placeholder="your@corporateemail.com" required autocomplete="email">
+                </div>
+
+                <!-- Verified Annual Net Profit / EBITDA -->
+                <div class="form-section">
+                    <label for="revenueCategory">Verified Annual Net Profit / EBITDA</label>
+                    <select id="revenueCategory" name="revenueCategory" required>
+                        <option value="" disabled selected>Select your revenue bracket</option>
+                        <option value="below-1m">Below € 1,000,000.- (Immediate AI Rejection)</option>
+                        <option value="1m-10m">€ 1,000,000.- to € 10,000,000.-</option>
+                        <option value="10m-50m">€ 10,000,000.- to € 50,000,000.-</option>
+                        <option value="50m-plus">€ 50,000,000.- + (Ultra Elite)</option>
+                    </select>
+                </div>
+
+                <!-- Independent Verification Source -->
+                <div class="form-section">
+                    <label for="verificationSource">Independent Verification Source</label>
+                    <select id="verificationSource" name="verificationSource" required>
+                        <option value="" disabled selected>Select verification source</option>
+                        <option value="big-four">Big Four (Deloitte, EY, KPMG, PwC)</option>
+                        <option value="private-bank">Private Bank</option>
+                        <option value="corporate-lawyer">Corporate Lawyer</option>
+                    </select>
+                </div>
+
+                <!-- Average Weekly Operational Workload -->
+                <div class="form-section">
+                    <label for="workloadCategory">Average Weekly Operational Workload</label>
+                    <select id="workloadCategory" name="workloadCategory" required>
+                        <option value="" disabled selected>Select workload range</option>
+                        <option value="under-50">Under 50 hours</option>
+                        <option value="50-70">50 to 70 hours</option>
+                        <option value="70-90">70 to 90+ hours</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit">Authorize Screening & Process Evaluation</button>
             </form>
         </div>
 
@@ -75,5 +186,19 @@
             &copy; 2026 TheFounderClubVIP. By invitation only. Absolute privacy guaranteed. | <a href="privacy.html">Privacy Policy</a>
         </footer>
     </div>
+
+    <script>
+        document.getElementById('vipScreeningForm').addEventListener('submit', function(e) {
+            const revenueCategory = document.getElementById('revenueCategory').value;
+            
+            // Check if user selected "Below € 1,000,000.-"
+            if (revenueCategory === 'below-1m') {
+                e.preventDefault();
+                alert('Access Denied. Your profile does not meet the minimum capital criteria required for TheFounderClubVIP.');
+                window.location.href = 'bedankt.html';
+                return false;
+            }
+        });
+    </script>
 </body>
 </html>
