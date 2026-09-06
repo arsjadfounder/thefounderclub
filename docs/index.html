@@ -77,25 +77,138 @@
             resize: vertical;
             min-height: 120px;
         }
-        button {
-            background: linear-gradient(135deg, #B58928 0%, #D4AF37 50%, #F3E5AB 100%); /* Glanzend goud */
-            color: #0A1128; /* Donkerblauwe letters voor contrast */
-            padding: 14px;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: bold;
+
+        /* Checkbox Styling */
+        .checkbox-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding: 16px;
+            background-color: rgba(212, 175, 55, 0.05);
+            border: 1px solid #4A5568;
+            border-radius: 8px;
+            text-align: left;
+        }
+        
+        .checkbox-wrapper input[type="checkbox"] {
+            width: auto;
+            min-width: 20px;
+            height: 20px;
+            margin-top: 2px;
             cursor: pointer;
-            margin-top: 25px;
+            accent-color: #D4AF37;
+        }
+        
+        .checkbox-wrapper label {
+            font-size: 0.95rem;
+            color: #FFFFFF;
+            cursor: pointer;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            margin-top: 0;
+        }
+        
+        .checkbox-wrapper label span {
+            color: #D4AF37;
+            font-weight: 600;
+        }
+
+        /* Form Section Styling */
+        .form-section {
+            text-align: left;
+            margin-bottom: 16px;
+        }
+        
+        .form-section label {
+            display: block;
+            font-size: 0.9rem;
+            color: #D4AF37;
+            margin-bottom: 6px;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        select {
+            padding: 14px;
+            background-color: #0A1128;
+            border: 1px solid #4A5568;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            color: #FFFFFF;
+            transition: border-color 0.3s;
+            width: 100%;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #D4AF37;
+        }
+
+        button {
+            background-color: #d4af37;
+            color: #0a1128;
+            border: none;
+            padding: 16px 32px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            margin-top: 20px;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
-            transition: transform 0.2s, box-shadow 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
         }
         button:active {
-            transform: translateY(0);
+            transform: scale(0.98);
+        }
+
+        /* Grid Styling */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            text-align: left;
+            margin-top: 40px;
+        }
+
+        .card {
+            background-color: #1c2541;
+            border: 1px solid #1f3a60;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .card h3 {
+            color: #d4af37;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #8e9aaf;
+            line-height: 1.5;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #8e9aaf;
+            text-align: center;
+        }
+
+        footer a {
+            color: #d4af37;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -151,10 +264,34 @@
             <option value="70-90">70 to 90+ hours</option> 
         </select> 
     </div>
-    <button type="submit">Authorize Screening & Process Evaluation</button>
+    <!-- Premium Submit Button -->
+    <button type="submit" style="background-color: #d4af37; color: #0a1128; border: none; padding: 16px 32px; font-size: 1.05rem; font-weight: 700; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; width: 100%; margin-top: 20px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); text-transform: uppercase; letter-spacing: 0.5px;">
+        Authorize Screening & Process Evaluation →
+    </button>
 </form>
 
-<script>
+<!-- Fixed Structured Grid and Footer -->
+<div class="grid" style="display: grid; grid-template-columns: 1fr; gap: 16px; text-align: left; margin-top: 40px;">
+    <div class="card" style="background-color: #1c2541; border: 1px solid #1f3a60; padding: 20px; border-radius: 12px;">
+        <h3 style="color: #d4af37; font-size: 1.05rem; font-weight: 600; margin-bottom: 6px;">Hustle Compatibility</h3>
+        <p style="font-size: 0.9rem; color: #8e9aaf; line-height: 1.5;">Match with a partner who truly understands your 80-hour work week, extreme risks, and pressure. Equal drive, equal tolerance.</p>
+    </div>
+    <div class="card" style="background-color: #1c2541; border: 1px solid #1f3a60; padding: 20px; border-radius: 12px;">
+        <h3 style="color: #d4af37; font-size: 1.05rem; font-weight: 600; margin-bottom: 6px;">Complementary Skills</h3>
+        <p style="font-size: 0.9rem; color: #8e9aaf; line-height: 1.5;">Find the perfect romantic connection that instantly complements your business skill sets. The ultimate synergy between tech, sales, and creation.</p>
+    </div>
+    <div class="card" style="background-color: #1c2541; border: 1px solid #1f3a60; padding: 20px; border-radius: 12px;">
+        <h3 style="color: #d4af37; font-size: 1.05rem; font-weight: 600; margin-bottom: 6px;">100% Vetted & Verified</h3>
+        <p style="font-size: 0.9rem; color: #8e9aaf; line-height: 1.5;">Strict manual background and revenue screening. We keep gold-diggers and noise out of your personal life with iron discipline.</p>
+    </div>
+</div>
+
+<footer style="margin-top: 50px; font-size: 0.8rem; color: #8e9aaf; text-align: center;">
+    &copy; 2026 TheFounderClubVIP. By invitation only. Absolute privacy guaranteed. | <a href="privacy.html" style="color: #d4af37; text-decoration: none;">Privacy Policy</a>
+</footer>
+    </div>
+
+    <script>
 document.getElementById('vipScreeningForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const revenueCategory = document.getElementById('revenueCategory').value;
@@ -173,6 +310,5 @@ document.getElementById('vipScreeningForm').addEventListener('submit', function(
     this.submit();
 });
 </script>
-    </div>
 </body>
 </html>
