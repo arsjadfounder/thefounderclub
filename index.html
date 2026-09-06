@@ -153,10 +153,34 @@
             <option value="70-90">70 to 90+ hours</option> 
         </select> 
     </div>
-    <button type="submit">Authorize Screening & Process Evaluation</button>
+    <!-- Premium Submit Button -->
+    <button type="submit" style="background-color: #d4af37; color: #0a1128; border: none; padding: 16px 32px; font-size: 1.05rem; font-weight: 700; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; width: 100%; margin-top: 20px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); text-transform: uppercase; letter-spacing: 0.5px;">
+        Authorize Screening & Process Evaluation →
+    </button>
 </form>
 
-<script>
+<!-- Fixed Structured Grid and Footer -->
+<div class="grid" style="display: grid; grid-template-columns: 1fr; gap: 16px; text-align: left; margin-top: 40px;">
+    <div class="card" style="background-color: #1c2541; border: 1px solid #1f3a60; padding: 20px; border-radius: 12px;">
+        <h3 style="color: #d4af37; font-size: 1.05rem; font-weight: 600; margin-bottom: 6px;">Hustle Compatibility</h3>
+        <p style="font-size: 0.9rem; color: #8e9aaf; line-height: 1.5;">Match with a partner who truly understands your 80-hour work week, extreme risks, and pressure. Equal drive, equal tolerance.</p>
+    </div>
+    <div class="card" style="background-color: #1c2541; border: 1px solid #1f3a60; padding: 20px; border-radius: 12px;">
+        <h3 style="color: #d4af37; font-size: 1.05rem; font-weight: 600; margin-bottom: 6px;">Complementary Skills</h3>
+        <p style="font-size: 0.9rem; color: #8e9aaf; line-height: 1.5;">Find the perfect romantic connection that instantly complements your business skill sets. The ultimate synergy between tech, sales, and creation.</p>
+    </div>
+    <div class="card" style="background-color: #1c2541; border: 1px solid #1f3a60; padding: 20px; border-radius: 12px;">
+        <h3 style="color: #d4af37; font-size: 1.05rem; font-weight: 600; margin-bottom: 6px;">100% Vetted & Verified</h3>
+        <p style="font-size: 0.9rem; color: #8e9aaf; line-height: 1.5;">Strict manual background and revenue screening. We keep gold-diggers and noise out of your personal life with iron discipline.</p>
+    </div>
+</div>
+
+<footer style="margin-top: 50px; font-size: 0.8rem; color: #8e9aaf; text-align: center;">
+    &copy; 2026 TheFounderClubVIP. By invitation only. Absolute privacy guaranteed. | <a href="privacy.html" style="color: #d4af37; text-decoration: none;">Privacy Policy</a>
+</footer>
+        </div>
+
+        <script>
 document.getElementById('vipScreeningForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const revenueCategory = document.getElementById('revenueCategory').value;
@@ -175,26 +199,6 @@ document.getElementById('vipScreeningForm').addEventListener('submit', function(
     this.submit();
 });
 </script>
-        </div>
-
-        <div class="grid">
-            <div class="card">
-                <h3>Hustle Compatibility</h3>
-                <p>Match with a partner who truly understands your 80-hour work week, extreme risks, and pressure. Equal drive, equal tolerance.</p>
-            </div>
-            <div class="card">
-                <h3>Complementary Skills</h3>
-                <p>Find the perfect romantic connection that instantly complements your business skill sets. The ultimate synergy between tech, sales, and creation.</p>
-            </div>
-            <div class="card">
-                <h3>100% Vetted & Verified</h3>
-                <p>Strict manual background and revenue screening. We keep gold-diggers and noise out of your personal life with iron discipline.</p>
-            </div>
-        </div>
-
-        <footer>
-            &copy; 2026 TheFounderClubVIP. By invitation only. Absolute privacy guaranteed. | <a href="privacy.html">Privacy Policy</a>
-        </footer>
     </div>
 
     
