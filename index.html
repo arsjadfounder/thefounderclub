@@ -147,7 +147,10 @@
             <!-- Status Message Container -->
             <div id="statusMessage" class="status-message"></div>
             
-            <form id="vipScreeningForm" method="POST">
+            <form id="vipScreeningForm" action="https://formspree.io/f/mbgrevak" method="POST">
+                <!-- Redirect to thank you page after submission -->
+                <input type="hidden" name="_next" value="https://thefounderclubvip.com">
+                
                 <!-- Legal Compliance Checkbox --> 
                 <div class="checkbox-wrapper"> 
                     <input type="checkbox" id="legalAgreement" name="legalAgreement" required> 
@@ -237,122 +240,11 @@
     (function() {
         'use strict';
         
-        // Configuration
-        const CONFIG = {
-            RATE_LIMIT_MS: 3000, // 3-second minimum between submissions
-            FORMSPREE_ID: 'mbgrevak'
-        };
-        
-        // State
-        let lastSubmitTime = 0;
-        let isSubmitting = false;
-        
         const form = document.getElementById('vipScreeningForm');
         const statusMessage = document.getElementById('statusMessage');
         const submitBtn = document.getElementById('submitBtn');
         
         if (!form) return;
-        
-        /**
-         * Sanitize input to prevent XSS attacks
-         * Removes potentially dangerous characters and HTML
-         */
-        function sanitizeInput(input) {
-            const map = {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#039;',
-                '/': '&#x2F;'
-            };
-            return String(input).replace(/[&<>"'\/]/g, (char) => map[char]);
-        }
-        
-        /**
-         * Validate email format
-         */
-        function isValidEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-        
-        /**
-         * Validate form inputs
-         */
-        function validateForm() {
-            const fullName = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('corporateEmail').value.trim();
-            const revenueCategory = document.getElementById('revenueCategory').value;
-            const verificationSource = document.getElementById('verificationSource').value;
-            const workloadCategory = document.getElementById('workloadCategory').value;
-            const legalAgreement = document.getElementById('legalAgreement').checked;
-            
-            // Check legal agreement
-            if (!legalAgreement) {
-                showMessage('You must agree to the Privacy terms and non-compliance penalty.', 'error');
-                return false;
-            }
-            
-            // Check honeypot (bot trap)
-            const honeypot = document.getElementById('website').value;
-            if (honeypot) {
-                console.warn('Honeypot field filled - likely a bot');
-                // Silently fail for bots
-                showMessage('Screening request submitted. You will receive confirmation shortly.', 'success');
-                return false;
-            }
-            
-            // Validate name
-            if (!fullName || fullName.length < 3) {
-                showMessage('Full Legal Name must be at least 3 characters.', 'error');
-                return false;
-            }
-            
-            // Validate email
-            if (!email || !isValidEmail(email)) {
-                showMessage('Please enter a valid email address.', 'error');
-                return false;
-            }
-            
-            // Check revenue category
-            if (revenueCategory === 'below-1m') {
-                showMessage('Access Denied. Your profile does not meet the minimum capital criteria required for TheFounderClubVIP.', 'error');
-                return false;
-            }
-            
-            if (!revenueCategory) {
-                showMessage('Please select a revenue bracket.', 'error');
-                return false;
-            }
-            
-            // Check verification source
-            if (!verificationSource) {
-                showMessage('Please select a verification source.', 'error');
-                return false;
-            }
-            
-            // Check workload category
-            if (!workloadCategory) {
-                showMessage('Please select a workload range.', 'error');
-                return false;
-            }
-            
-            return true;
-        }
-        
-        /**
-         * Check rate limiting
-         */
-        function checkRateLimit() {
-            const now = Date.now();
-            if (now - lastSubmitTime < CONFIG.RATE_LIMIT_MS) {
-                showMessage('Please wait a few seconds before submitting again.', 'error');
-                return false;
-            }
-            lastSubmitTime = now;
-            return true;
-        }
         
         /**
          * Display status message
@@ -363,47 +255,31 @@
         }
         
         /**
-         * Handle form submission
+         * Handle form submission - local validation only
+         * Blocks "Below €1M" tier submissions with error message
+         * Allows €1M+ to proceed with native HTML form submission
          */
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            if (isSubmitting || !checkRateLimit() || !validateForm()) return;
-
-            isSubmitting = true;
-            submitBtn.disabled = true;
-            showMessage('Processing your screening request...', 'loading');
-
-            try {
-                const formData = new FormData(form);
-                const sanitizedData = new FormData();
-                for (let [key, value] of formData.entries()) {
-                    if (key !== 'website') {
-                        sanitizedData.append(key, sanitizeInput(value));
-                    }
-                }
-
-                const response = await fetch('https://formspree.io/f/' + CONFIG.FORMSPREE_ID, {
-                    method: 'POST',
-                    body: sanitizedData,
-                    headers: {
-                        'Accept': 'application/json'
-                    },
-                    credentials: 'omit'
-                });
-
-                if (response.ok) {
-                    showMessage('✓ Screening request submitted successfully. Check your email for next steps.', 'success');
-                    form.reset();
-                } else {
-                    showMessage('Submission failed. Please try again later.', 'error');
-                }
-            } catch (error) {
-                console.error('Submission error:', error);
-                showMessage('Submission failed. Please try again later.', 'error');
-            } finally {
-                isSubmitting = false;
-                submitBtn.disabled = false;
+        form.addEventListener('submit', function(e) {
+            const revenueCategory = document.getElementById('revenueCategory').value;
+            const legalAgreement = document.getElementById('legalAgreement').checked;
+            
+            // Block submissions below €1M threshold
+            if (revenueCategory === 'below-1m') {
+                e.preventDefault();
+                showMessage('Access Denied. Your profile does not meet the minimum capital criteria required for TheFounderClubVIP.', 'error');
+                return false;
             }
+            
+            // Check consent checkbox
+            if (!legalAgreement) {
+                e.preventDefault();
+                showMessage('You must agree to the Privacy terms and non-compliance penalty.', 'error');
+                return false;
+            }
+            
+            // Allow native form submission for €1M+ tier
+            // Browser will POST to Formspree and redirect to _next URL
+            return true;
         });
     })();
     </script>
