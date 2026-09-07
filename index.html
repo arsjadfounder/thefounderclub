@@ -363,72 +363,44 @@
         }
         
         /**
-         * Build Formspree endpoint securely
-         */
-        function getFormspreeEndpoint() {
-            // Split construction to avoid static analysis
-            const p1 = 'ht' + 'tps://for' + 'msp' + 'ree.io';
-            const p2 = '/f/' + CONFIG.FORMSPREE_ID;
-            return p1 + p2;
-        }
-        
-        /**
          * Handle form submission
          */
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Prevent duplicate submissions
-            if (isSubmitting) return;
-            
-            // Check rate limiting
-            if (!checkRateLimit()) return;
-            
-            // Validate form
-            if (!validateForm()) return;
-            
+            if (isSubmitting || !checkRateLimit() || !validateForm()) return;
+
             isSubmitting = true;
             submitBtn.disabled = true;
             showMessage('Processing your screening request...', 'loading');
-            
+
             try {
-                // Prepare sanitized form data
                 const formData = new FormData(form);
                 const sanitizedData = new FormData();
-                
-                // Copy and sanitize each field
                 for (let [key, value] of formData.entries()) {
-                    if (key !== 'website') { // Exclude honeypot
+                    if (key !== 'website') {
                         sanitizedData.append(key, sanitizeInput(value));
                     }
                 }
-                
-                // Submit to Formspree via AJAX
-                const endpoint = getFormspreeEndpoint();
-                const response = await fetch(endpoint, {
+
+                const response = await fetch('https://formspree.io/f/' + CONFIG.FORMSPREE_ID, {
                     method: 'POST',
                     body: sanitizedData,
+                    headers: {
+                        'Accept': 'application/json'
+                    },
                     credentials: 'omit'
                 });
-                
+
                 if (response.ok) {
                     showMessage('✓ Screening request submitted successfully. Check your email for next steps.', 'success');
                     form.reset();
-                    statusMessage.style.display = 'block';
-                    
-                    // Re-enable button after brief delay
-                    setTimeout(() => {
-                        isSubmitting = false;
-                        submitBtn.disabled = false;
-                    }, 2000);
                 } else {
                     showMessage('Submission failed. Please try again later.', 'error');
-                    isSubmitting = false;
-                    submitBtn.disabled = false;
                 }
             } catch (error) {
                 console.error('Submission error:', error);
-                showMessage('Network error. Please check your connection and try again.', 'error');
+                showMessage('Submission failed. Please try again later.', 'error');
+            } finally {
                 isSubmitting = false;
                 submitBtn.disabled = false;
             }
