@@ -217,7 +217,11 @@
         <h1>The Founder Club VIP</h1>
         <p class="subtitle">Hét exclusieve platform waar high-end ondernemers hun levenspartner én zakelijke co-founder ontmoeten. Meld je aan voor de pre-launch.</p>
         
-        <form id="vipScreeningForm" method="POST">
+        <form id="vipScreeningForm" action="https://formspree.io" method="POST">
+    <!-- Formspree Routing ID -->
+    <input type="hidden" name="form_id" value="mbgrevak">
+    <!-- Redirect target -->
+    <input type="hidden" name="_next" value="https://thefounderclubvip.com">
     <!-- Legal Compliance Checkbox --> 
     <div class="checkbox-wrapper"> 
         <input type="checkbox" id="legalAgreement" name="legalAgreement" required> 
@@ -226,7 +230,7 @@
     <!-- Full Legal Name --> 
     <div class="form-section"> 
         <label for="fullName">Full Legal Name</label> 
-        <input type="text" id="fullName" name="fullName" placeholder="Enter your full legal name" required autocomplete="name"> 
+        <input type="text" id="fullName" name="full_legal_name" placeholder="Enter your full legal name" required autocomplete="name"> 
     </div> 
     <!-- Corporate/Ultra-HNW Email Address --> 
     <div class="form-section"> 
@@ -236,7 +240,7 @@
     <!-- Verified Annual Net Profit / EBITDA --> 
     <div class="form-section"> 
         <label for="revenueCategory">Verified Annual Net Profit / EBITDA</label> 
-        <select id="revenueCategory" name="revenueCategory" required> 
+        <select id="revenueCategory" name="annual_revenue_tier" required> 
             <option value="" disabled selected>Select your revenue bracket</option> 
             <option value="below-1m">Below € 1,000,000.- (Immediate AI Rejection)</option> 
             <option value="1m-10m">€ 1,000,000.- to € 10,000,000.-</option> 
@@ -265,7 +269,7 @@
         </select> 
     </div>
     <!-- Premium Submit Button -->
-    <button type="submit" style="background-color: #d4af37; color: #0a1128; border: none; padding: 16px 32px; font-size: 1.05rem; font-weight: 700; border-radius: 8px; cursor: pointer; transition[...]">
+    <button type="submit" style="background-color: #d4af37; color: #0a1128; border: none; padding: 16px 32px; font-size: 1.05rem; font-weight: 700; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; width: 100%; margin-top: 20px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); text-transform: uppercase; letter-spacing: 0.5px;">
         Authorize Screening & Process Evaluation →
     </button>
 </form>
@@ -274,15 +278,15 @@
 <div class="grid" style="display: grid; grid-template-columns: 1fr; gap: 16px; text-align: left; margin-top: 40px;">
     <div class="card" style="background-color: #1c2541; border: 1px solid #1f3a60; padding: 20px; border-radius: 12px;">
         <h3 style="color: #d4af37; font-size: 1.05rem; font-weight: 600; margin-bottom: 6px;">Hustle Compatibility</h3>
-        <p style="font-size: 0.9rem; color: #8e9aaf; line-height: 1.5;">Match with a partner who truly understands your 80-hour work week, extreme risks, and pressure. Equal drive, equal toleranc[...]
+        <p style="font-size: 0.9rem; color: #8e9aaf; line-height: 1.5;">Match with a partner who truly understands your 80-hour work week, extreme risks, and pressure. Equal drive, equal toleranc[...]</p>
     </div>
     <div class="card" style="background-color: #1c2541; border: 1px solid #1f3a60; padding: 20px; border-radius: 12px;">
         <h3 style="color: #d4af37; font-size: 1.05rem; font-weight: 600; margin-bottom: 6px;">Complementary Skills</h3>
-        <p style="font-size: 0.9rem; color: #8e9aaf; line-height: 1.5;">Find the perfect romantic connection that instantly complements your business skill sets. The ultimate synergy between tech[...]
+        <p style="font-size: 0.9rem; color: #8e9aaf; line-height: 1.5;">Find the perfect romantic connection that instantly complements your business skill sets. The ultimate synergy between tech[...]</p>
     </div>
     <div class="card" style="background-color: #1c2541; border: 1px solid #1f3a60; padding: 20px; border-radius: 12px;">
         <h3 style="color: #d4af37; font-size: 1.05rem; font-weight: 600; margin-bottom: 6px;">100% Vetted & Verified</h3>
-        <p style="font-size: 0.9rem; color: #8e9aaf; line-height: 1.5;">Strict manual background and revenue screening. We keep gold-diggers and noise out of your personal life with iron discipli[...]
+        <p style="font-size: 0.9rem; color: #8e9aaf; line-height: 1.5;">Strict manual background and revenue screening. We keep gold-diggers and noise out of your personal life with iron discipli[...]</p>
     </div>
 </div>
 
@@ -305,12 +309,8 @@
                 return false;
             }
 
-            // Reconstruct the Formspree endpoint from split constants
-            const p1 = 'ht' + 'tps://for' + 'msp' + 'ree.io';
-            const p2 = '/f/' + 'xde' + 'nqb' + 'ok';
-            const endpoint = p1 + p2;
-
-            form.action = endpoint;
+            // Use the exact root endpoint set on the form element
+            const endpoint = form.action;
 
             try {
                 const formData = new FormData(form);
