@@ -132,8 +132,7 @@
             color: var(--gold);
             display: block;
         }
-<form id="vipScreeningForm" action="https://formspree.io" method="POST">/f/mbgrevak direct toe achter formspree.io in de action).
-
+    </style>
 </head>
 <body>
     <div class="container">
@@ -149,8 +148,6 @@
             <div id="statusMessage" class="status-message"></div>
             
             <form id="vipScreeningForm" action="https://formspree.io" method="POST">
-                <!-- Include Formspree form ID so the root endpoint can route to the correct form -->
-                <input type="hidden" name="form_id" value="mbgrevak">
                 <!-- Redirect to thank you page after submission -->
                 <input type="hidden" name="_next" value="https://thefounderclubvip.com">
                 
@@ -188,106 +185,39 @@
                         <option value="50m-plus">€50,000,000.- + (Ultra Elite)</option> 
                     </select> 
                 </div> 
-                
+
                 <!-- Independent Verification Source --> 
                 <div class="form-section"> 
                     <label for="verificationSource">Independent Verification Source</label> 
-                    <select id="verificationSource" name="verificationSource" required> 
+                    <select id="verificationSource" name="verification_source" required> 
                         <option value="" disabled selected>Select verification source</option> 
                         <option value="big-four">Big Four (Deloitte, EY, KPMG, PwC)</option> 
                         <option value="private-bank">Private Bank</option> 
                         <option value="corporate-lawyer">Corporate Lawyer</option> 
                     </select> 
                 </div> 
-                
+
                 <!-- Average Weekly Operational Workload --> 
                 <div class="form-section"> 
-                    <label for="workloadCategory">Average Weekly Operational Workload</label> 
-                    <select id="workloadCategory" name="workloadCategory" required> 
+                    <label for="workload">Average Weekly Operational Workload</label> 
+                    <select id="workload" name="weekly_workload" required> 
                         <option value="" disabled selected>Select workload range</option> 
                         <option value="under-50">Under 50 hours</option> 
                         <option value="50-70">50 to 70 hours</option> 
                         <option value="70-90">70 to 90+ hours</option> 
                     </select> 
-                </div>
+                </div> 
                 
-                <!-- Premium Submit Button -->
-                <button type="submit" id="submitBtn">
-                    Authorize Screening & Process Evaluation →
-                </button>
-<form id="vipScreeningForm" action="https://formspree.io" method="POST">
-
-
-<!-- Legal Compliance Checkbox --> 
-<div class="checkbox-wrapper"> 
-<input type="checkbox" id="legalAgreement" name="legalAgreement" required> 
-           
-
-            
-            
-    
-            
-                    
-                  
-                <div class="card">
-                    <h3>100% Vetted & Verified</h3>
-                    <p>Strict manual background and revenue screening. We keep gold-diggers and noise out with iron discipline.</p>
-                </div>
-            </div>
-
-            <footer>
-                &copy; 2026 TheFounderClubVIP. By invitation only. Absolute privacy guaranteed. | <a href="privacy.html">Privacy Policy</a>
-            </footer>
+                <button type="submit" id="submitBtn">Authorize Screening & Process Evaluation →</button>
+            </form>
         </div>
-    </div>
 
-    <script>
-    (function() {
-        'use strict';
-        
-        const form = document.getElementById('vipScreeningForm');
-        const statusMessage = document.getElementById('statusMessage');
-        const submitBtn = document.getElementById('submitBtn');
-        
-        if (!form) return;
-        
-        /**
-         * Display status message
-         */
-        function showMessage(message, type) {
-            statusMessage.textContent = message;
-            statusMessage.className = `status-message ${type}`;
-        }
-        
-        /**
-         * Handle form submission - local validation only
-         * Blocks "Below €1M" tier submissions with error message
-         * Allows €1M+ to proceed with native HTML form submission
-         */
-        form.addEventListener('submit', function(e) {
-            const revenueCategory = document.getElementById('revenueCategory').value;
-            const legalAgreement = document.getElementById('legalAgreement').checked;
-            
-            // Block submissions below €1M threshold
-            if (revenueCategory === 'below-1m') {
-                e.preventDefault();
-                showMessage('Access Denied. Your profile does not meet the minimum capital criteria required for TheFounderClubVIP.', 'error');
-                return false;
-            }
-            
-            // Check consent checkbox
-            if (!legalAgreement) {
-                e.preventDefault();
-                showMessage('You must agree to the Privacy terms and non-compliance penalty.', 'error');
-                return false;
-            }
-            
-            // Allow native form submission for €1M+ tier
-            // Browser will POST to Formspree and redirect to _next URL
-            return true;
-        });
-    })();
-    </script>
-
-</body>
-</html>
+        <!-- Feature Cards Grid -->
+        <div class="grid">
+            <div class="card">
+                <h3>Hustle Compatibility</h3>
+                <p>Match with a partner who truly understands your 80-hour work week, extreme risks, and pressure. Equal drive, equal tolerance.</p>
+            </div>
+            <div class="card">
+                <h3>Complementary Skills</h3>
+                <p>Find the perfect romantic connection that instantly complements your business skill sets. The ultimate synergy.</p>
